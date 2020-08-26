@@ -18,8 +18,23 @@
 *
 */
 
-var rockPaperScissors = function (
-) {
-  // TODO: your solution here
+// in throw
+// out array of strings separated by commas
+//// given a set, produce all combos of set
+//// length would be num of games
+
+// create result var set to empty arr
+
+var rockPaperScissors = function () {
+  var options = ["R", "P", "S"]
+  var throws = [];
+  for (var a = 0; a < options.length; a++) {
+    for (var b = 0; b < options.length; b++) {
+      for (var c = 0; c < options.length; c++) {
+        throws.push(options[a] + options[b] + options[c]);
+      }
+    }
+  }
+  return throws;
 };
 
