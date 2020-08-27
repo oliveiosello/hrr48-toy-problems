@@ -1,5 +1,5 @@
 /*
- * Find the first item that occurs an even number of times in an array.
+ * Find the first item that occurs an even occber of times in an array.
  * Remember to handle multiple even-occurrence items and return the first one. 
  * Return null if there are no even-occurrence items.
 */
@@ -24,20 +24,20 @@
 ///// return first
 
 var evenOccurrence = function(arr) {
-  var numCount = {};
-  var evenOcc = [];
+  var occCount = {};
 
   for (var i = 0; i < arr.length; i++) {
-    let num = arr[i];
-    if (numCount[num] === undefined) {
-      numCount[num] = 1
+    let item = arr[i];
+    if (occCount[item] === undefined) {
+      occCount[item] = 1
     } else {
-      numCount[num] += 1
+      occCount[item] += 1
     }
   }
-  for (var key in numCount) {
-    if (numCount[key] % 2 === 0) {
+  for (var key in occCount) {
+    if (occCount[key] % 2 === 0) {
         return key;
     }
   }
+  return null;
 };
