@@ -20,43 +20,92 @@ var getIndexBelowMaxForKey = function(str, max) {
   return hash % max;
 };
 
+
+var Node = function(key, value) {
+  var node = {};
+
+  var nodeKey = key;
+  var nodeValue = value;
+  var next = null;
+
+  node.getKey = function() {
+    return nodeKey;
+  }
+
+  node.insert = function(key, value) {
+    if (nodeKey === key) {
+      nodeValue = value;
+    } else if (next) {
+      next.insert(key,value);
+    } else {
+      next = Node(key, value);
+    }
+  }
+
+  node.remove = function(key) {
+    if (next && next.getKey() === key) {
+      next = next.next;
+    } else if (next) {
+      next.remove(key);
+    }
+  }
+
+  node.retrieve = function(key) {
+    if (nodeKey=== key) {
+      return nodeValue;
+    } else if (next) {
+      return next.retrieve(key);
+    } 
+  }
+  return node;
+}
+
+
 var makeHashTable = function() {
   var result = {};
   var storage = [];
+
   var storageLimit = 4;
   var size = 0;
-
-  
   
   result.insert = function(key, value) {
-    // create var equal to result of getIndex on key/limit
-    // iterate over storage array at index
-    // create var to store tuple 
-    // if tuple key is undefined
-      // assign tuple to storage
-    // if tuple at 0 is equal to key
-      // set current tuple equal to value
-      // size++
-    // if size reaches 3/4 of storage limit, double storange limit
+    var index = getIndexBelowMaxForKey(key, storageLimit);
+    var linkedList = storage[index]
+
+    if (linkedList) {
+      linkedList.insert(key, value)
+    } else {
+      storage[index] = Node(key, value)
+    }
+
+    size += 1
+     // if size exceeds 3/4 of storage limit, double storage limit
       // if size > storage limit * .75
   };
 
   result.retrieve = function(key) {
-    // create index var equal to result of getIndex on key/limit
-    // create var set to tuple of storage at index
-    // iterate over tuple
-      // if current tuple's key is equal to key
-        // return the current tuple's value
+    var index = getIndexBelowMaxForKey(key, storageLimit);
+    var linkedList = storage[index]
+
+    if (linkedList) {
+      return linkedList.retrieve(key)
+    } 
+  }
 
   result.remove = function(key) {
-    // create index var equal to result of getIndex on key/limit
-    // create var set to tupe of storage at index
-    // iterate over tuple
-      // if current tuple's key is equal to key
-        // remove tuple from storage
-        // size --
-    // if size drops below 1/4 of storage limit, cut storage limit in half
+    var index = getIndexBelowMaxForKey(key, storageLimit);
+    var linkedList = storage[index]
+
+    if (linkedList) {
+      if (linkedList.getKey() === key) {
+        storage[index] = linkedList.next
+      } else {
+        linkedList.remove(key)
+      }
+      size--
+      // if size drops below 1/4 of storage limit, cut storage limit in half
       // if size < storage limit * .25
+    } 
   };
 
   return result;
