@@ -26,6 +26,7 @@
 // create result var set to empty arr
 
 var rockPaperScissors = function () {
+  debugger;
   var options = ["R", "P", "S"]
   var throws = [];
   for (var a = 0; a < options.length; a++) {

@@ -41,3 +41,8 @@ var evenOccurrence = function(arr) {
   }
   return null;
 };
+
+
+console.log(evenOccurrence([1, 7, 2, 4, 5, 6, 8, 9, 6, 4]))
+console.log(evenOccurrence([1, 3, 3, 3, 2, 4, 4, 2, 5]))
+console.log(evenOccurrence(['meow', 1, 1, 'meow']))
