@@ -27,22 +27,19 @@ var evenOccurrence = function(arr) {
   var occCount = {};
 
   for (var i = 0; i < arr.length; i++) {
-    let item = arr[i];
+    let item = JSON.stringify(arr[i]);
     if (occCount[item] === undefined) {
       occCount[item] = 1
     } else {
       occCount[item] += 1
     }
   }
-  for (var key in occCount) {
-    if (occCount[key] % 2 === 0) {
-        return key;
+
+  for (var i = 0; i < arr.length; i++) {
+    let item = JSON.stringify(arr[i]); 
+    if (occCount[item] % 2 === 0){
+      return arr[i];
     }
   }
   return null;
 };
-
-
-console.log(evenOccurrence([1, 7, 2, 4, 5, 6, 8, 9, 6, 4]))
-console.log(evenOccurrence([1, 3, 3, 3, 2, 4, 4, 2, 5]))
-console.log(evenOccurrence(['meow', 1, 1, 'meow']))

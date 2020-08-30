@@ -61,6 +61,6 @@ var Node = function(value) {
 
 var hasCycle = function(linkedList) {
   let seen = {};
-  
+  while ()
 
 };

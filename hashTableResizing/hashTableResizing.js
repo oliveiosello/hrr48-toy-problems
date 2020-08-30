@@ -57,9 +57,14 @@ var Node = function(key, value) {
       return next.retrieve(key);
     } 
   }
-  return node;
-}
 
+  node.forEach = function(iterator) {
+    iterator(nodeKey, nodeValue)
+    if (node !== null) {
+      node.forEach(iterator);
+    }
+  }
+}
 
 var makeHashTable = function() {
   var result = {};
@@ -67,6 +72,24 @@ var makeHashTable = function() {
 
   var storageLimit = 4;
   var size = 0;
+
+  function redistribute() {
+    var accum = []
+
+    for (let i = 0; i < storage.length; i++) {
+      var linkedList = storage[i]
+      if (linkedList){
+        linkedList.forEach(function(key, value) {
+          accum.push([key, value])
+        })
+      }
+    }
+    storage = []
+    for (let i = 0; i < accum.length; i++) {
+      var keyValue = accum[i]
+      result.insert(keyValue[0], keyValue[1])
+    }
+  }
   
   result.insert = function(key, value) {
     var index = getIndexBelowMaxForKey(key, storageLimit);
@@ -77,10 +100,11 @@ var makeHashTable = function() {
     } else {
       storage[index] = Node(key, value)
     }
-
     size += 1
-     // if size exceeds 3/4 of storage limit, double storage limit
-      // if size > storage limit * .75
+    if (size > storageLimit * .75) {
+      storageLimit = storageLimit * 2
+      redistribute()
+    }
   };
 
   result.retrieve = function(key) {
@@ -103,8 +127,10 @@ var makeHashTable = function() {
         linkedList.remove(key)
       }
       size--
-      // if size drops below 1/4 of storage limit, cut storage limit in half
-      // if size < storage limit * .25
+      if (size < storageLimit * .25) {
+        storageLimit = storageLimit / 2
+        redistribute();
+      }
     } 
   };
 
