@@ -60,8 +60,8 @@ var Node = function(key, value) {
 
   node.forEach = function(iterator) {
     iterator(nodeKey, nodeValue)
-    if (node !== null) {
-      node.forEach(iterator);
+    if (next !== null) {
+      next.forEach(iterator);
     }
   }
 
