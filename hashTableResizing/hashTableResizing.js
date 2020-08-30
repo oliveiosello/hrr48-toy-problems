@@ -64,7 +64,9 @@ var Node = function(key, value) {
       node.forEach(iterator);
     }
   }
-}
+
+  return node;
+};
 
 var makeHashTable = function() {
   var result = {};
