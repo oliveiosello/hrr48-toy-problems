@@ -25,10 +25,14 @@
 
 // create result var set to empty arr
 
-var rockPaperScissors = function () {
-  debugger;
+var rockPaperScissors = function(rounds) {
+  if (rounds === undefined) {
+    var rounds = 3
+  }
+
   var options = ["R", "P", "S"]
   var throws = [];
+
   for (var a = 0; a < options.length; a++) {
     for (var b = 0; b < options.length; b++) {
       for (var c = 0; c < options.length; c++) {

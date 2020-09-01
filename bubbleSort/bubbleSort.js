@@ -32,7 +32,49 @@
 
 // Feel free to add helper functions if needed.
 
+// in arr
+// out arr
+// considerations recurse, helper could be isSorted
+// edge... optimization if already sorted
+//         don't check last element on each pass?
+
+// brute force solution:
+  // var set to empty arr for sorted
+  // iterate over array *indexing cheaper?
+  // if first element is greater than second
+  //   second pushed to sorted arr
+  //     else, first
+  // if arr.length is 1, push to sorted array
+  // if sorted arr is not sorted
+  //   recurse on sorted
+  // return sorted?
+
+let isSorted = false
 
 var bubbleSort = function(array) {
-  // Your code here.
+  while (!isSorted) {
+    sort(array)
+  }
 };
+
+var sort = function(array) {
+  let sorted = [];
+  let frst = array[0];
+  let scnd = array[1];
+  if (array.length === 1) {
+    sorted.push(frst)
+  }
+  if (frst > scnd) {
+    sorted.push(scnd);
+  } else {
+    sorted.push(frst);
+  }
+  while (sorted.length === 0) {
+    isSorted = true;
+
+  }
+}
+
+// current problems:
+// how to pass sorted in as array to be sorted
+// how to return most recently sorted (input array) if sorted is true
