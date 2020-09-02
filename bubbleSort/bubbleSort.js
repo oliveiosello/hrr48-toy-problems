@@ -49,31 +49,27 @@
   //   recurse on sorted
   // return sorted?
 
-let isSorted = false
 
 var bubbleSort = function(array) {
+  let isSorted = false;
+  let cycle = 0
   while (!isSorted) {
-    sort(array)
+    isSorted = true;
+    for (var i = 0; i < array.length - 1 - cycle; i++) {
+      let item = array[i];
+      let next = array[i + 1];
+      if (item > next) {
+        isSorted = false;
+        array[i] = next;
+        array[i + 1] = item;
+      }
+    }
+    cycle++
   }
+  return array;
 };
 
-var sort = function(array) {
-  let sorted = [];
-  let frst = array[0];
-  let scnd = array[1];
-  if (array.length === 1) {
-    sorted.push(frst)
-  }
-  if (frst > scnd) {
-    sorted.push(scnd);
-  } else {
-    sorted.push(frst);
-  }
-  while (sorted.length === 0) {
-    isSorted = true;
 
-  }
-}
 
 // current problems:
 // how to pass sorted in as array to be sorted
