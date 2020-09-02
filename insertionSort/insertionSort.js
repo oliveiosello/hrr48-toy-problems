@@ -45,8 +45,40 @@ var testingTransform = function(array) {
   return transform;
 };
 
-var insertionSort = function(array
-) {
-  // Your code goes here. Feel free to add helper functions if needed.
+// in arr
+// out sorted arr
+// consider shoudl maintain order for duplicates
+//          is input array structured like intended output
+//            [{value: value, i: i}]
+// edge if two of same, should maintain order
+//   if values are only swapped if less/greater, index maintained naturally
+//   need to address if no prev or next (start or end)
+
+// iterate over arr
+//   create vars for prev, curr, next values
+//   if current val is greater than next
+//     swap
+//     if val that took place of current is smaller than last
+//       swap
+// 
+
+var insertionSort = function(array) {
+  for (var i = 0; i < array.length; i++) {
+    let previous = array[i - 1];
+    let current = array[i];
+    let next = array[i + 1];
+    if (next) {
+    if (current.value > next.value) {
+      current = array[i + 1];
+      next = array[i]
+    }
+    }
+    if (previous) {
+    if (current.value < previous.value) {
+      previous = array[i + 1];
+      current = array[i - 1];
+    }
+    }
+  }
   return array;
 };
