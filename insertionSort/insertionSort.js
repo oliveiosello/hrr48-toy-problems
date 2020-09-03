@@ -63,22 +63,14 @@ var testingTransform = function(array) {
 // 
 
 var insertionSort = function(array) {
-  for (var i = 0; i < array.length; i++) {
-    let previous = array[i - 1];
-    let current = array[i];
-    let next = array[i + 1];
-    if (next) {
-    if (current.value > next.value) {
-      current = array[i + 1];
-      next = array[i]
-    }
-    }
-    if (previous) {
-    if (current.value < previous.value) {
-      previous = array[i + 1];
-      current = array[i - 1];
-    }
+  for (var i = 0; i < array.length - 1; i++) {
+    let j = i
+    while (j > 0 && array[j].value < array[j - 1].value) {
+          const temp = array[j - 1];
+          array[j - 1] = array[j];
+          array[j] = temp;
+          j--
     }
   }
-  return array;
+  return array;s
 };
