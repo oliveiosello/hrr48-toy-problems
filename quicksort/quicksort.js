@@ -10,6 +10,40 @@
  *    Combines the two arrays and the pivot into a sorted array.
  */
 
+ // in array
+ // out array
+ // consider
+ // edge
+
+ // create min 
+ // create max
+ // create isSorted
+
+ // iterate over array start at min until max - i... ?
+ // last element is pivot
+ // compare pivot to first element
+ //   if fist is larger
+ //     swap pivot and second to last element
+ //       max--
+ //     swap new last with first
+ // if isSorted
+ //   recurse on new array
 
 var quicksort = function(array) {
+    let min = array[0];
+    let max = array.length - 2;
+    let isSorted = false;
+  
+    for (var i = min; i < max; i++) {
+      let pivot = array[array.length - 1];
+      if (min > pivot) {
+        array.length - 2 = pivot
+        
+      }
+    }
+  };
 };
+
+
+
+
