@@ -37,7 +37,7 @@ var quicksort = function(array) {
     for (var i = min; i < max; i++) {
       let pivot = array[array.length - 1];
       if (min > pivot) {
-        array.length - 2 = pivot
+        array[array.length - 2] = pivot
         
       }
     }

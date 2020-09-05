@@ -95,8 +95,28 @@
  *
  */
 
+ // in array
+ // out sorted array
+ // key points 
+ //   need to split array recurs
+ //   need to add back together, helper func?
+ // edge
+ //   if odd number, only one unit in "sub"
+ 
+ // divide array in half (sub arrays)
+ // while sub arrays greater than length 1
+ //   recurse divide
+ // iterate over array (i + 2)
+ //   left = i
+ //   right = i + 1
+ //     is left < right
+ //       combine with smaller on left
+
+ // how to continue with same pattern once you have arrays of two... ?
+ //   
+
 
 
 var mergeSort = function(array) {
-  // Your code here.
+
 };
