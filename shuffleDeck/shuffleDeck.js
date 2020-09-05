@@ -31,6 +31,20 @@
  *   See https://www.dartmouth.edu/~chance/teaching_aids/books_articles/Mann.pdf .
  */
 
+ // in arr
+ // out arr (shuffled)
+ // cons ensure actually random
+ // edge
+
+ // create empty shuffled array
+ // while length of deck is greater than zero
+ // ** potentially split deck in half and run following on both halves, possibly
+ // just run on the whole as is though**
+ //   use math.random to choose an index in deck
+ //   use splice (need to dbl check mutation) to remove selected
+ //     push to shuffled arr
+ // return shuffled arr
+
 var shuffleDeck = function(deck) {
   // Your code here
 };
