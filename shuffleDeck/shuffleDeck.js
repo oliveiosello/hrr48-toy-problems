@@ -64,3 +64,5 @@ var orderedDeck = function() {
 
   return deck;
 };
+
+// updating file to create more readable email chain of results to address

@@ -120,3 +120,5 @@
 var mergeSort = function(array) {
 
 };
+
+// updating file to create more readable email chain of results to address

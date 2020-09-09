@@ -23,6 +23,7 @@
   // create var to house min value??
     this.container = {};
     this.count = 0;
+    this.min = [];
     // this.min = 0;
 
 
@@ -59,6 +60,7 @@
   // access keys in obj
     // return minimum value of all keys
     Stack.prototype.min = function() {
+      
 
     };
 
