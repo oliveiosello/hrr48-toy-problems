@@ -59,24 +59,33 @@ var phoneDigitsToLetters = {
 //   once for each char in set of four
 // push concatted char from each of the four
 
-var getLetters = function(digitString) {
-  var letters = [];
-  for (var i = 0; i < digitString.length; i++) {
-    let num = digitString[i];
-    if (phoneDigitsToLetters[num]) {
-      letters.push(phoneDigitsToLetters[num]);
-    }
-  }
-  return letters;
-};
+// var getLetters = function(digitString) {
+//   var letters = [];
+//   for (var i = 0; i < digitString.length; i++) {
+//     let num = digitString[i];
+//     if (phoneDigitsToLetters[num]) {
+//       letters.push(phoneDigitsToLetters[num]);
+//     }
+//   }
+//   return letters;
+// };
 
 // might a separate arr for each letter set
 
 var telephoneWords = function(digitString) {
-  var words = [];
-  // for (var i = 0; i < letterArr.length; i++) {
-  //   let set = letterArr[i];
-
-  // }
-  for ()
+  let combos = [];
+  let first = phoneDigits[digitString[0]].split("")
+  for (char of first) {
+    let second = phoneDigits[digitString[1]].split("")
+    for (char2 of second) {
+      let third = phoneDigits[digitString[2]].split("")
+      for (char3 of third) {
+        let fourth = phoneDigits[digitString[3]].split("")
+        for (char4 of fourth) {
+          combos.push(char + char2 + char3 + char4)
+        }
+      }
+    }
+  }
+  return combos;
 };
