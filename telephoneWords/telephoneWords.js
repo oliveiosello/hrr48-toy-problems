@@ -74,13 +74,13 @@ var phoneDigitsToLetters = {
 
 var telephoneWords = function(digitString) {
   let combos = [];
-  let first = phoneDigits[digitString[0]].split("")
+  let first = phoneDigitsToLetters[digitString[0]].split("")
   for (char of first) {
-    let second = phoneDigits[digitString[1]].split("")
+    let second = phoneDigitsToLetters[digitString[1]].split("")
     for (char2 of second) {
-      let third = phoneDigits[digitString[2]].split("")
+      let third = phoneDigitsToLetters[digitString[2]].split("")
       for (char3 of third) {
-        let fourth = phoneDigits[digitString[3]].split("")
+        let fourth = phoneDigitsToLetters[digitString[3]].split("")
         for (char4 of fourth) {
           combos.push(char + char2 + char3 + char4)
         }
