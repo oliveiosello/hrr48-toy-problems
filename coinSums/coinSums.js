@@ -24,7 +24,27 @@ makeChange(1) === 1
 makeChange(2) === 2
 */
 
+// i total money
+// o num of ways to make change
+// c 1 pound is 100p, 2 pound is 200p
+// e 
+
+// brainstorm
+//   recursion
+//   modulo
+//   arr of coins
+//   possibly use decision tree
+//     how to track visited paths
+//     root node?
+//     base case?
+//   label 1 and 1 lb as 100 and 200 p to limit conversion calc
+//   counter for solutions
+//   subtract from input for each coin
+
+
 var makeChange = function(total) {
+    let coins = [1, 2, 5, 10, 20, 50, 100, 200];
+    let ways = 0;
 
 };
 
