@@ -17,5 +17,11 @@
  * -> ["", "j", "ju", "jm", "jp", "jmu", "jmp", "jpu", "jmpu", "u", "m", "p", "mu", "mp", "pu", "mpu"]
  */
 
+ // i str
+ // o arr of strs
+ // c chars should be sorted
+ //   no duplicate combos
+ // e should return empty str as well... 
+
 var powerSet = function(str) {
 };
