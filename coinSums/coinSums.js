@@ -41,11 +41,38 @@ makeChange(2) === 2
 //   counter for solutions
 //   subtract from input for each coin
 
+// create ways counter set to 0
+// define func to recurse
+//   pass in index and remainder
+//   create var for current coin
+//   if index is zero and remainder modulo coin is zero
+//     increment ways
+//   continue while remainder is not less than 0
+//     call recursive func on next index and remainder
+//     subtract coin from remainer
+// return counter
 
-var makeChange = function(total) {
-    let coins = [1, 2, 5, 10, 20, 50, 100, 200];
-    let ways = 0;
 
+
+var makeChange = function(total, coins) {
+    var ways = 0;
+    var index = coins.length - 1;
+    var remainder = total;
+
+    var recurseCoins = function(index, remainder) {
+        var coin = coins[index];
+        if (index === 0 && remainder % coin === 0) {
+            ways++;
+            return;
+        }
+        while (remainder >= 0) {
+            recurseCoins(index - 1, remainder);
+            remainder -= coin;
+        }
+    }
+
+    recurseCoins(index, remainder);
+    return ways;
 };
 
 

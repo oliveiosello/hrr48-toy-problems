@@ -52,17 +52,19 @@
 
     // compare count to tracked number?
 
+var hasCycle = function(head) {
+  let turtle = head;
+  let hare = head;
 
-var Node = function(value) {
-  return { value: value, next: null };
+  while (turtle && hare && hare.next) {
+    turtle = turtle.next;
+    hare = hare.next.next;
+
+    if (turtle === hare) {
+      return true;
+    }
+  }
+  return false;
 };
-
-
-
-var hasCycle = function(linkedList) {
-  let seen = {};
-  while ()
-
-};
-
+ 
 // updating file to create more readable email chain of results to address
