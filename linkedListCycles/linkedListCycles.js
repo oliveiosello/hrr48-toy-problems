@@ -52,9 +52,9 @@
 
     // compare count to tracked number?
 
-var hasCycle = function(head) {
-  let turtle = head;
-  let hare = head;
+var hasCycle = function(linkedList) {
+  let turtle = linkedList;
+  let hare = linkedList;
 
   while (turtle && hare && hare.next) {
     turtle = turtle.next;
