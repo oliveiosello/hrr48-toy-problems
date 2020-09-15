@@ -47,6 +47,17 @@
 
 var shuffleDeck = function(deck) {
   // Your code here
+  for (var i = 0; i < deck.length; i++) {
+    var random = i + Math.floor(Math.random() * deck.length - 1);
+    shuffle(i, random, deck);
+  }
+  return deck;
+};
+
+var shuffle = function(index1, index2, deck) {
+  var temp = deck[index1];
+  deck[index1] = deck[index2];
+  deck[index2] = temp;
 };
 
 // Ordered deck generator provided for your testing convenience
@@ -64,5 +75,3 @@ var orderedDeck = function() {
 
   return deck;
 };
-
-// updating file to create more readable email chain of results to address

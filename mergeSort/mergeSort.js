@@ -103,22 +103,46 @@
  // edge
  //   if odd number, only one unit in "sub"
  
- // divide array in half (sub arrays)
+ // helper func:
+ // divide array in half (sub arrays) *math.floor
  // while sub arrays greater than length 1
  //   recurse divide
- // iterate over array (i + 2)
- //   left = i
- //   right = i + 1
- //     is left < right
- //       combine with smaller on left
+ // main func:
+ // create result arr
+ //   iterate over halves
+ //     if left < right
+ //       push smaller to result
 
  // how to continue with same pattern once you have arrays of two... ?
- //   
+   
 
 
 
 var mergeSort = function(array) {
-
+   var halved = Math.floor(array.length / 2);
+   var l = array.slice(0, halved);
+   var r = array.slice(halved);
+   var sortL = mergeSort(l);
+   var sortR = mergeSort(r);
+   return merge(sortL, sortR)
 };
 
-// updating file to create more readable email chain of results to address
+var merge = function(l, r) {
+    sorted = [];
+    var i = 0;
+    var j = 0;
+    while (i < l.length && j < r.length ) {
+        if (l[i] < r[i]) {
+            sorted.push(l[i]);
+        } else {
+            sorted.push(r[i]);
+        }
+    }
+    if (i === l.length) {
+        sorted.push(r.slice(j));
+    } else {
+        sorted.push(l.slice(i))
+    }
+    return sorted;
+}
+
