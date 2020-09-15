@@ -35,7 +35,39 @@ var Tree = function(value) {
   this.children = [];
 };
 
+// i filter
+// o arr
+// c how to incorporate depth as arg
+//   how to apply a depth arg to a node
+//   outline says "shouldn't" need to adjust anything
+// e what should an empty tree return
+
+// create arr to store true children
+// create func to recurse on node
+//   iterate over children
+//     call func recursively on current node
+// call filter on eachnode
+//   if result is true
+//     push to true arr
+// set root var to root node
+// call func on root
+// return true arr
+
 Tree.prototype.DFSelect = function(filter) {
+   var trueChildren = [];
+   recurseTree = function(node) {
+     for (var i = 0; i < node.children.length; i++) {
+       recurseTree(node.chidren[i]);
+     }
+     if (filter(node) === true) {
+      trueChildren.push(node);
+     }
+   }
+   // create root var
+   var root = this.root
+   // call recurse tree with root node as arg
+   recureTree(root);
+   return trueChildren;
 };
 
 
