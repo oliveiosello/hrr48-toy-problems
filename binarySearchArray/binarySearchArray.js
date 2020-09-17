@@ -28,27 +28,22 @@
 //       if no, recurse
 
 var binarySearch = function (array, target) {
+    let first = 0;
+    let last = array.length - 1;
     let half = Math.floor(array.length / 2);
-    let l = array.slice(0, half);
-    let r = array.slice(half);
 
-    let last = l[l.length - 1];
-    let first = r[0];
-
-    if (target <= last) {
-        if (target === last) {
-            return i;
-        } else {
-            binarySearch(l);
-        }
-    }
-    
-    if (target >= first) {
-        if (target === first) {
-            return i;
-        } else {
-            binarySearch(r);
-        }
+    while(first < last && array[half] !== target) {
+      if (target > array[half]) {
+        first = half + 1;
+      } else if (target < array[half]) {
+        last = half - 1;
+      }
+      half = Math.floor((first + last) / 2);
+      }
+    if (array[half] !== target) {
+      return -1
+    } else {
+      return half;
     }
 };
 
