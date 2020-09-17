@@ -37,8 +37,31 @@ var Tree = function(value) {
   this.children = [];
 };
 
-Tree.prototype.countLeaves = function () {
-  // TODO: implement me!
+// i node
+// o num of leaves
+// c recursion
+//   create counter?
+// e null node?
+//   if null is only leaf?
+
+// create counter
+// check to see if node has children
+//   if children are null
+//     counter++
+//   else
+//     recurse on node left
+//     recurse on node right
+// return counter
+
+Tree.prototype.countLeaves = function (node) {
+   var leaves = 0;
+   if (node.left === null && node.right === null) {
+     leaves++;
+   } else {
+     // maybe I need to return within recurse...
+   }
+
+   return leaves
 };
 
 /**
