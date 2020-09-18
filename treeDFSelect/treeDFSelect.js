@@ -1,36 +1,36 @@
 /**
-  *
-  * Implement a `DFSelect` method on this Tree class.
-  *
-  * DFSelect accepts a filter function, calls that function on each of the nodes
-  * in Depth First order, and returns a flat array of node values of the tree
-  * for which the filter returns true.
-  *
-  * Example:
-  *   var root1 = new Tree(1);
-  *   var branch2 = root1.addChild(2);
-  *   var branch3 = root1.addChild(3);
-  *   var leaf4 = branch2.addChild(4);
-  *   var leaf5 = branch2.addChild(5);
-  *   var leaf6 = branch3.addChild(6);
-  *   var leaf7 = branch3.addChild(7);
-  *   root1.DFSelect(function (value, depth) {
-  *     return value % 2;
-  *   })
-  *   // [1, 5, 3, 7]
-  *
-  *   root1.DFSelect(function (value, depth) {
-  *     return depth === 1;
-  *   })
-  *   // [2, 3]
-  *
-  */
+ *
+ * Implement a `DFSelect` method on this Tree class.
+ *
+ * DFSelect accepts a filter function, calls that function on each of the nodes
+ * in Depth First order, and returns a flat array of node values of the tree
+ * for which the filter returns true.
+ *
+ * Example:
+ *   var root1 = new Tree(1);
+ *   var branch2 = root1.addChild(2);
+ *   var branch3 = root1.addChild(3);
+ *   var leaf4 = branch2.addChild(4);
+ *   var leaf5 = branch2.addChild(5);
+ *   var leaf6 = branch3.addChild(6);
+ *   var leaf7 = branch3.addChild(7);
+ *   root1.DFSelect(function (value, depth) {
+ *     return value % 2;
+ *   })
+ *   // [1, 5, 3, 7]
+ *
+ *   root1.DFSelect(function (value, depth) {
+ *     return depth === 1;
+ *   })
+ *   // [2, 3]
+ *
+ */
 
 /*
  * Basic tree that stores a value.
  */
 
-var Tree = function(value) {
+var Tree = function (value) {
   this.value = value;
   this.children = [];
 };
@@ -53,34 +53,36 @@ var Tree = function(value) {
 // call func on root
 // return true arr
 
-Tree.prototype.DFSelect = function(filter) {
-   var trueChildren = [];
-   recurseTree = function(node) {
-     for (var i = 0; i < node.children.length; i++) {
-       recurseTree(node.chidren[i]);
-     }
-     if (filter(node) === true) {
-      trueChildren.push(node);
-     }
-   }
-   // create root var
-   var root = this.root
-   // call recurse tree with root node as arg
-   recureTree(root);
-   return trueChildren;
+Tree.prototype.DFSelect = function (filter) {
+  var trueChildren = [];
+  var recurseTree = function (node, depth) {
+    if (filter(node.value, depth)) {
+      trueChildren.push(node.value);
+    }
+    for (var i = 0; i < node.children.length; i++) {
+      recurseTree(node.chidren[i], depth + 1);
+    }
+    //  if (filter(node) === true) {
+    //   trueChildren.push(node);
+    //  }
+  };
+
+  // create root var
+  // var root = this.root
+  // call recurse tree with root node as arg
+  recureTree(this, 0);
+  return trueChildren;
 };
-
-
 
 /**
  * You shouldn't need to change anything below here, but feel free to look.
-  */
+ */
 
 /**
-  * add an immediate child
-  * (wrap values in Tree nodes if they're not already)
-  */
-Tree.prototype.addChild = function(child) {
+ * add an immediate child
+ * (wrap values in Tree nodes if they're not already)
+ */
+Tree.prototype.addChild = function (child) {
   if (!child || !(child instanceof Tree)) {
     child = new Tree(child);
   }
@@ -95,10 +97,10 @@ Tree.prototype.addChild = function(child) {
 };
 
 /**
-  * check to see if the provided tree is already a child of this
-  * tree __or any of its sub trees__
-  */
-Tree.prototype.isDescendant = function(child) {
+ * check to see if the provided tree is already a child of this
+ * tree __or any of its sub trees__
+ */
+Tree.prototype.isDescendant = function (child) {
   if (this.children.indexOf(child) !== -1) {
     // `child` is an immediate child of this tree
     return true;
@@ -114,9 +116,9 @@ Tree.prototype.isDescendant = function(child) {
 };
 
 /**
-  * remove an immediate child
-  */
-Tree.prototype.removeChild = function(child) {
+ * remove an immediate child
+ */
+Tree.prototype.removeChild = function (child) {
   var index = this.children.indexOf(child);
   if (index !== -1) {
     // remove the child

@@ -132,17 +132,18 @@ var merge = function(l, r) {
     var i = 0;
     var j = 0;
     while (i < l.length && j < r.length ) {
-        if (l[i] < r[i]) {
-            sorted.push(l[i]);
+        if (l[i] <= r[i]) {
+            sorted.push(l[i++]);
         } else {
-            sorted.push(r[i]);
+            sorted.push(r[i++]);
         }
     }
+    var remainder = [];
     if (i === l.length) {
-        sorted.push(r.slice(j));
+        remainder.push(r.slice(j));
     } else {
-        sorted.push(l.slice(i))
+        remainder.push(l.slice(i))
     }
-    return sorted;
+    return sorted.concat(remainder);
 }
 
