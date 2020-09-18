@@ -41,7 +41,7 @@ var binarySearch = function (array, target) {
       half = Math.floor((first + last) / 2);
       }
     if (array[half] !== target) {
-      return -1
+      return null
     } else {
       return half;
     }

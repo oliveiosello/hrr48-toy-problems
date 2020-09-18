@@ -11,5 +11,24 @@
   * don't worry about handling cyclical object structures.
   *
   */
+
+  // i 2 objs
+  // o bool
+  // c no lodash
+  //   
+  // e
+
+  // create two vars
+  //   one for each obj
+  //   equal to destructured copy
+  // compare each element
+  //     if elements don't match
+  //       return false
+  // return true
+
 var deepEquals = function(apple, orange) {
+  let strOne = JSON.stringify(apple);
+  let strTwo = JSON.stringify(orange);
+
+  return strOne === strTwo;
 };

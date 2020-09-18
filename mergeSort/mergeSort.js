@@ -95,55 +95,55 @@
  *
  */
 
- // in array
- // out sorted array
- // key points 
- //   need to split array recurs
- //   need to add back together, helper func?
- // edge
- //   if odd number, only one unit in "sub"
- 
- // helper func:
- // divide array in half (sub arrays) *math.floor
- // while sub arrays greater than length 1
- //   recurse divide
- // main func:
- // create result arr
- //   iterate over halves
- //     if left < right
- //       push smaller to result
+// in array
+// out sorted array
+// key points
+//   need to split array recurs
+//   need to add back together, helper func?
+// edge
+//   if odd number, only one unit in "sub"
 
- // how to continue with same pattern once you have arrays of two... ?
-   
+// helper func:
+// divide array in half (sub arrays) *math.floor
+// while sub arrays greater than length 1
+//   recurse divide
+// main func:
+// create result arr
+//   iterate over halves
+//     if left < right
+//       push smaller to result
 
+// how to continue with same pattern once you have arrays of two... ?
 
-
-var mergeSort = function(array) {
-   var halved = Math.floor(array.length / 2);
-   var l = array.slice(0, halved);
-   var r = array.slice(halved);
-   var sortL = mergeSort(l);
-   var sortR = mergeSort(r);
-   return merge(sortL, sortR)
+var mergeSort = function (array) {
+  if (array.length < 2) {
+    return array;
+  }
+  var halved = Math.floor(array.length / 2);
+  var l = array.slice(0, halved);
+  var r = array.slice(halved);
+  var sortL = mergeSort(l);
+  var sortR = mergeSort(r);
+  return merge(sortL, sortR);
 };
 
-var merge = function(l, r) {
-    sorted = [];
-    var i = 0;
-    var j = 0;
-    while (i < l.length && j < r.length ) {
-        if (l[i] <= r[i]) {
-            sorted.push(l[i++]);
-        } else {
-            sorted.push(r[i++]);
-        }
-    }
-    var remainder = [];
-    if (i === l.length) {
-        remainder.push(r.slice(j));
+var merge = function (l, r) {
+  var i = 0;
+  var j = 0;
+  sorted = [];
+  while (i < l.length && j < r.length) {
+    if (l[i] <= r[j]) {
+      sorted.push(l[i++]);
     } else {
-        remainder.push(l.slice(i))
+      sorted.push(r[j++]);
     }
-    return sorted.concat(remainder);
-}
-
+  }
+//   var remainder = [];
+//   if (i === l.length) {
+//       remainder.push(r.slice(j));
+//   } else {
+//       remainder.push(l.slice(i))
+//   }
+  var remainder = i === l.length ? r.slice(j) : l.slice(i);
+  return sorted.concat(remainder);
+};
